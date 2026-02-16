@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ColorCraft — Color Palette Generator | Color Scheme Generator</title>
+    <meta name="description" content="Generate beautiful color palettes instantly. Color harmony modes, image palette extraction, accessibility checker, export as CSS variables, Tailwind config, SCSS. Free color scheme generator.">
+    <meta name="keywords" content="color palette generator, color scheme generator, tailwind colors, color harmony, complementary colors, analogous colors, triadic colors, WCAG contrast checker, CSS color variables">
+    <meta property="og:title" content="ColorCraft — Color Palette Generator">
+    <meta property="og:description" content="Generate beautiful, harmonious color palettes. Export as CSS, Tailwind, SCSS. Check accessibility. Free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mack-moneymaker.github.io/colorcraft/">
+    <link rel="canonical" href="https://mack-moneymaker.github.io/colorcraft/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <h1 class="logo">🎨 ColorCraft</h1>
+            <div class="harmony-selector">
+                <label for="harmony-mode">Harmony:</label>
+                <select id="harmony-mode">
+                    <option value="random">Random</option>
+                    <option value="complementary">Complementary</option>
+                    <option value="analogous">Analogous</option>
+                    <option value="triadic">Triadic</option>
+                    <option value="split-complementary">Split-Complementary</option>
+                    <option value="monochromatic">Monochromatic</option>
+                </select>
+            </div>
+        </div>
+        <div class="topbar-right">
+            <button id="btn-extract" class="btn btn-sm" title="Extract from image">📷 Extract</button>
+            <button id="btn-accessibility" class="btn btn-sm" title="Accessibility checker">♿ A11y</button>
+            <button id="btn-export" class="btn btn-sm" title="Export palette">📦 Export</button>
+            <button id="btn-saved" class="btn btn-sm" title="Saved palettes">💾 Saved</button>
+            <button id="btn-theme" class="btn btn-sm btn-icon" title="Toggle theme">🌙</button>
+        </div>
+    </header>
+
+    <!-- Palette Area -->
+    <main class="palette-container" id="palette-container">
+        <!-- 5 color bars injected by JS -->
+    </main>
+
+    <!-- Hint -->
+    <div class="hint" id="hint">Press <kbd>Space</kbd> to generate · Click lock to keep a color</div>
+
+    <!-- Hidden file input -->
+    <input type="file" id="image-input" accept="image/*" hidden>
+
+    <!-- Modal Backdrop -->
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+
+    <!-- Export Modal -->
+    <div class="modal" id="modal-export">
+        <div class="modal-header">
+            <h2>Export Palette</h2>
+            <button class="modal-close" data-close>&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="export-tabs">
+                <button class="export-tab active" data-format="css">CSS Variables</button>
+                <button class="export-tab" data-format="tailwind">Tailwind</button>
+                <button class="export-tab" data-format="scss">SCSS</button>
+                <button class="export-tab" data-format="png">PNG Swatch</button>
+            </div>
+            <pre class="export-code" id="export-code"></pre>
+            <canvas id="export-canvas" style="display:none"></canvas>
+            <button class="btn btn-primary" id="btn-copy-export">📋 Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <!-- Accessibility Modal -->
+    <div class="modal" id="modal-a11y">
+        <div class="modal-header">
+            <h2>Accessibility Checker</h2>
+            <button class="modal-close" data-close>&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="a11y-grid" id="a11y-grid"></div>
+        </div>
+    </div>
+
+    <!-- Saved Palettes Modal -->
+    <div class="modal" id="modal-saved">
+        <div class="modal-header">
+            <h2>Saved Palettes</h2>
+            <button class="modal-close" data-close>&times;</button>
+        </div>
+        <div class="modal-body">
+            <div id="saved-list" class="saved-list"></div>
+            <p class="saved-empty" id="saved-empty">No saved palettes yet. Click the ❤️ to save the current palette.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with ❤️ by <a href="https://github.com/mack-moneymaker" target="_blank">Mack</a> · Try <a href="https://mack-moneymaker.github.io/gradientlab/" target="_blank">GradientLab</a> for beautiful CSS gradients</p>
+    </footer>
+
+    <script src="app.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "ColorCraft",
+        "description": "Free color palette generator with harmony modes, image extraction, accessibility checking, and export to CSS/Tailwind/SCSS.",
+        "url": "https://mack-moneymaker.github.io/colorcraft/",
+        "applicationCategory": "DesignApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+</body>
+</html>
